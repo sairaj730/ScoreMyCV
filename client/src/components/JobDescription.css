@@ -1,0 +1,39 @@
+.job-description-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.jd-textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-family: inherit;
+  font-size: 1em;
+  resize: vertical;
+}
+
+.jd-next-button {
+  padding: 12px 25px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: bold;
+  align-self: flex-end;
+}
+
+.jd-next-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.jd-next-button:hover:not(:disabled) {
+  background-color: #0056b3;
+}
