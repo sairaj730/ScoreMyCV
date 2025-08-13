@@ -3,33 +3,44 @@
   flex-direction: column;
   gap: 20px;
   width: 100%;
-  max-width: 1000px; /* Increased max-width */
+  max-width: 1200px; /* Max width for very large screens */
   margin: 20px auto;
+  padding: 20px; /* Adjusted padding */
 }
 
 .score-card,
 .keywords-card,
-.resume-preview-card,
 .suggestions-card {
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 25px; /* Increased padding */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.resume-preview-card {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  min-height: 250px; /* Reduced min-height */
+  display: flex;
+  flex-direction: column;
 }
 
 /* New styles for circular progress bar */
 .circular-progress-container {
-  width: 160px; /* Slightly larger */
-  height: 160px; /* Slightly larger */
+  width: clamp(150px, 15vw, 180px); /* Responsive width */
+  height: clamp(150px, 15vw, 180px); /* Responsive height */
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #e0e0e0; /* Light grey track */
+  background-color: #e0e0e0;
   position: relative;
   margin: 20px auto;
-  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1); /* Inner shadow for depth */
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.15);
 }
 
 .circular-progress-bar {
@@ -40,102 +51,142 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  background: conic-gradient(
-    #6a11cb calc(var(--score) * 1%), /* Purple start */
-    #2575fc calc(var(--score) * 1%), /* Blue end */
-    #e0e0e0 0% /* Grey for remaining track */
-  );
-  transition: background 1.5s ease-in-out; /* Smooth transition for the progress */
+  /* Removed hardcoded background colors */
+  transition: background 1.5s ease-in-out;
 }
 
 .score-text {
   position: absolute;
-  font-size: 2.8em; /* Slightly larger font */
+  font-size: clamp(2.5em, 4vw, 3.5em);
   font-weight: bold;
-  color: #333; /* Darker text color */
-  background-color: white; /* Inner circle background */
+  color: #333;
+  background-color: white;
   width: 80%;
   height: 80%;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1; /* Ensure text is above the progress bar */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for inner circle */
+  z-index: 1;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
 }
 
 .score-description {
   text-align: center;
-  font-size: 1em; /* Slightly larger font */
-  color: #666;
+  font-size: clamp(0.9em, 1.5vw, 1.1em);
+  color: #555;
+  margin-top: 15px;
 }
 
 .keywords-list {
   padding: 15px;
-  border-radius: 6px;
+  border-radius: 8px;
+  background-color: #f8f8f8;
 }
 
 .keywords-list.matched {
-  background-color: #e9f7ef;
+  background-color: #e6ffe6;
 }
 
 .keywords-list.missing {
-  background-color: #fbe9e7;
-  padding: 10px;
+  background-color: #ffe6e6;
+  padding: 15px;
 }
 
 .keyword-badge {
   display: inline-block;
   background-color: #007bff;
   color: white;
-  padding: 6px 12px; /* Slightly larger padding */
-  border-radius: 15px;
-  margin: 5px;
-  font-size: 0.95em; /* Slightly larger font */
+  padding: 8px 15px;
+  border-radius: 20px;
+  margin: 6px;
+  font-size: clamp(0.9em, 1.5vw, 1em);
+  transition: background-color 0.2s ease;
+}
+
+.keyword-badge:hover {
+  background-color: #0056b3;
 }
 
 .keywords-list.missing .keyword-badge {
-  background-color: #d9534f;
+  background-color: #dc3545;
 }
 
-.resume-preview {
-  max-height: 250px; /* Increased max-height */
-  overflow-y: auto;
-  white-space: pre-wrap;
-  background-color: #fff;
+.keywords-list.missing .keyword-badge:hover {
+  background-color: #c82333;
+}
+
+/* Styles for the new resume preview textarea */
+.resume-preview-textarea {
+  width: 100%;
+  padding: 15px; /* Consistent with job description textarea */
   border: 1px solid #ccc;
-  padding: 15px; /* Increased padding */
-  border-radius: 4px;
-  font-size: 0.95em; /* Slightly larger font */
+  border-radius: 8px; /* Consistent with job description textarea */
+  font-family: inherit;
+  font-size: clamp(0.8em, 1.3vw, 0.85em); /* Consistent with previous font size */
+  line-height: 1.6;
+  resize: vertical; /* Allow vertical resizing */
+  overflow-y: auto; /* Enable vertical scrolling */
+  flex-grow: 1; /* Allow it to grow and fill space */
+  background-color: #fdfdfd; /* Consistent background */
+  color: #333; /* Default text color */
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: #888 #f1f1f1; /* For Firefox */
+  text-align: left; /* Explicitly left-align text */
+  vertical-align: top; /* Align text to the top */
+  white-space: normal; /* Standard white-space handling for textarea */
+}
+
+/* For Webkit browsers (Chrome, Safari) */
+.resume-preview-textarea::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+}
+
+.resume-preview-textarea::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Color of the track */
+  border-radius: 10px;
+}
+
+.resume-preview-textarea::-webkit-scrollbar-thumb {
+  background: #888; /* Color of the scroll thumb */
+  border-radius: 10px;
+}
+
+.resume-preview-textarea::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Color of the scroll thumb on hover */
 }
 
 /* Styles for the two-column layout */
 .score-display-columns {
   display: flex;
-  flex-wrap: wrap; /* Allow columns to wrap on smaller screens */
-  gap: 20px; /* Space between columns */
-  justify-content: center; /* Center columns if they don't fill the width */
+  flex-wrap: wrap;
+  gap: clamp(10px, 3vw, 30px);
+  justify-content: center;
+  margin-top: 20px;
+  align-items: stretch; /* Ensure columns have equal height */
 }
 
 .left-column,
 .right-column {
-  flex: 1 1 45%; /* Flexible sizing, preferred 45% width */
-  /* min-width: 300px; Removed min-width */
+  flex: 1 1 min(450px, 100%);
   display: flex;
   flex-direction: column;
-  gap: 20px; /* Space between cards within a column */
+  gap: clamp(15px, 2vw, 25px);
 }
 
 /* Heading font sizes */
 .score-card h2 {
-  font-size: 2em; /* Larger */
+  font-size: clamp(1.8em, 3vw, 2.2em);
+  color: #333;
+  margin-bottom: 20px;
 }
 
 .suggestions-card h3,
+.keywords-card h4,
 .resume-preview-card h3 {
-  font-size: 1.8em; /* Larger */
+  font-size: clamp(1.5em, 2.5vw, 1.8em);
+  color: #333;
+  margin-bottom: 15px;
 }
 
-.keywords-card h4 {
-  font-size: 1.5em; /* Larger */
-}
+/* No need for separate media queries if using clamp() and flexible units effectively */

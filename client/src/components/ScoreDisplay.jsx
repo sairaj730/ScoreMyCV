@@ -13,7 +13,13 @@ const ScoreDisplay = ({ result }) => {
             <div className="circular-progress-container">
               <div
                 className="circular-progress-bar"
-                style={{ '--score': result.score }}
+                style={{
+                  '--score': result.score,
+                  background: `conic-gradient(
+                    red 0% calc(var(--score) * 1%),
+                    white calc(var(--score) * 1%) 100%
+                  )`
+                }}
               >
                 <div className="score-text">{result.score}</div>
               </div>
@@ -73,7 +79,12 @@ const ScoreDisplay = ({ result }) => {
 
           <div className="resume-preview-card">
             <h3>Parsed Resume Text</h3>
-            <pre className="resume-preview">{result.parsedResumeText}</pre>
+            <textarea
+              className="resume-preview-textarea"
+              rows="10" // Adjust rows as needed
+              readOnly
+              value={result.parsedResumeText}
+            ></textarea>
           </div>
         </div>
       </div>

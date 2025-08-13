@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import JobDescription from "./components/JobDescription";
 import FileUpload from "./components/FileUpload";
 import ScoreDisplay from "./components/ScoreDisplay";
-import "./App.css";
 
 function App() {
   const [step, setStep] = useState("jd"); // "jd" -> "upload" -> "result"
