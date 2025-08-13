@@ -16,12 +16,19 @@ const ScoreDisplay = ({ result }) => {
       </div>
 
       <div className="suggestions-card">
-        <h3>How to Improve Your Score</h3>
+        <h3>🎯 Actionable Steps to Boost Your Score</h3>
         <p>
-          Your resume is missing some important keywords from the job description.
-          To better align with the role and increase your score, consider adding
-          the following terms to your resume where relevant:
+          To significantly improve your resume's alignment with this job description, focus on strategically incorporating the following **missing keywords**. Only add skills you genuinely possess and can demonstrate.
         </p>
+        <p className="suggestion-tip">
+          💡 **Tip:** Consider weaving these terms into your:
+          <ul>
+            <li>**Skills Section:** For direct listing.</li>
+            <li>**Experience Descriptions:** Describe how you used these skills in past roles.</li>
+            <li>**Project Details:** Highlight projects where you applied these technologies.</li>
+          </ul>
+        </p>
+        <h4>Missing Keywords to Consider:</h4>
         <div className="keywords-list missing">
           {result.missingSkills && result.missingSkills.length > 0 ? (
             result.missingSkills.map((s) => (
@@ -33,6 +40,9 @@ const ScoreDisplay = ({ result }) => {
             <p>No keywords missing. Great job!</p>
           )}
         </div>
+        <p className="suggestion-conclusion">
+          By adding relevant missing keywords, you can significantly increase your resume's visibility to Applicant Tracking Systems (ATS) and recruiters.
+        </p>
       </div>
 
       <div className="keywords-card">

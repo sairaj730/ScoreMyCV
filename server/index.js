@@ -4,6 +4,7 @@ import PDFParser from 'pdf2json';
 import mammoth from 'mammoth';
 import cors from 'cors';
 import fs from 'fs';
+import { itSkills } from './utils/it-skills.js';
 
 const app = express();
 app.use(cors());
@@ -46,18 +47,40 @@ app.post('/api/score', upload.single('resume'), async (req, res) => {
       if (err) console.error('Failed to delete uploaded file:', err);
     });
 
-    const jdWords = jobDescription.toLowerCase().split(/\W+/).filter(Boolean);
-    const resumeWords = resumeText.toLowerCase().split(/\W+/).filter(Boolean);
-    const matched = [...new Set(jdWords.filter(word => resumeWords.includes(word)))];
-    const missing = [...new Set(jdWords.filter(word => !resumeWords.includes(word)))];
-    const score = jdWords.length === 0 ? 0 : Math.round((matched.length / new Set(jdWords).size) * 100);
+    const normalizedJd = jobDescription.toLowerCase();
+    const normalizedResume = resumeText.toLowerCase();
 
-    res.json({ 
-      score, 
-      matchedSkills: matched, 
-      missingSkills: missing, 
-      parsedResumeText: resumeText 
+    // Helper function to escape special regex characters
+    const escapeRegex = (string) => {
+      return string.replace(/[.*+?^${}()|[\\]/g, '\\$&');
+    };
+
+    const extractSkills = (text, skills) => {
+      const foundSkills = new Set();
+      skills.forEach(skill => {
+        const pattern = new RegExp(`\\b${escapeRegex(skill.toLowerCase())}\\b`, 'i');
+        if (pattern.test(text)) {
+          foundSkills.add(skill);
+        }
+      });
+      return Array.from(foundSkills);
+    };
+
+    const jdSkills = extractSkills(normalizedJd, itSkills);
+    const resumeSkills = extractSkills(normalizedResume, itSkills);
+
+    const matchedSkills = jdSkills.filter(skill => resumeSkills.includes(skill));
+    const missingSkills = jdSkills.filter(skill => !resumeSkills.includes(skill));
+
+    const score = jdSkills.length === 0 ? 100 : Math.round((matchedSkills.length / jdSkills.length) * 100);
+
+    res.json({
+      score,
+      matchedSkills,
+      missingSkills,
+      parsedResumeText: resumeText
     });
+
   } catch (err) {
     console.error('Error in /api/score:', err);
     res.status(500).json({ error: err.message });
