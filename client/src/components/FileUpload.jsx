@@ -14,7 +14,7 @@ const FileUpload = ({ jdText, onResult, setError }) => {
       form.append("resume", file);
       form.append("jobDescription", jdText);
 
-      const resp = await fetch("http://localhost:5000/api/score", {
+      const resp = await fetch(`${import.meta.env.VITE_API_URL}/api/score`, {
         method: "POST",
         body: form,
       });

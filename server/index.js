@@ -5,6 +5,23 @@ import mammoth from 'mammoth';
 import cors from 'cors';
 import fs from 'fs';
 import { itSkills } from './utils/it-skills.js';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+// Fix __dirname in ES modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Serve frontend in production
+if (process.env.NODE_ENV === 'production') {
+  const clientBuildPath = path.join(__dirname, '../client/dist');
+  app.use(express.static(clientBuildPath));
+
+  // Catch-all route to serve index.html
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(clientBuildPath, 'index.html'));
+  });
+}
 
 const app = express();
 app.use(cors());

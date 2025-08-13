@@ -1,22 +1,26 @@
+* {
+  box-sizing: border-box;
+}
+
 .score-display {
   display: flex;
   flex-direction: column;
   gap: 20px;
   width: 100%;
-  max-width: 1200px; /* Max width for very large screens */
   margin: 20px auto;
   padding: 20px; /* Adjusted padding */
+  align-items: center;
 }
 
 .score-card,
 .keywords-card,
 .suggestions-card,
 .resume-preview-card { /* Added resume-preview-card here */
-  background-color: #ffffff;
-  border: 1px solid #e0e0e0;
+  background-color: #2d2d30; /* Dark background */
+  border: 1px solid #555;
   border-radius: 10px;
   padding: 25px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   transition: box-shadow 0.3s ease, transform 0.3s ease; /* Added transition */
 }
 
@@ -24,7 +28,7 @@
 .keywords-card:hover,
 .suggestions-card:hover,
 .resume-preview-card:hover { /* Added hover effect */
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
   transform: translateY(-3px);
 }
 
@@ -42,10 +46,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #e0e0e0;
+  background-color: #555;
   position: relative;
   margin: 20px auto;
-  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.15);
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.4);
 }
 
 .circular-progress-bar {
@@ -56,16 +60,15 @@
   align-items: center;
   justify-content: center;
   position: relative;
-  /* Removed hardcoded background colors */
-  transition: background 1.5s ease-in-out;
+  transition: background 1s ease-in-out;
 }
 
 .score-text {
   position: absolute;
   font-size: clamp(2.5em, 4vw, 3.5em);
   font-weight: bold;
-  color: #333;
-  background-color: white;
+  color: #ffffff;
+  background-color: #2d2d30;
   width: 80%;
   height: 80%;
   border-radius: 50%;
@@ -73,34 +76,34 @@
   align-items: center;
   justify-content: center;
   z-index: 1;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
 }
 
 .score-description {
   text-align: center;
   font-size: clamp(0.9em, 1.5vw, 1.1em);
-  color: #555;
+  color: #ffffff;
   margin-top: 15px;
 }
 
 .keywords-list {
   padding: 15px;
   border-radius: 8px;
-  background-color: #f8f8f8;
+  background-color: #3a3a3c;
 }
 
 .keywords-list.matched {
-  background-color: #e6ffe6;
+  background-color: #3a3a3c;
 }
 
 .keywords-list.missing {
-  background-color: #ffe6e6;
+  background-color: #3a3a3c;
   padding: 15px;
 }
 
 .keyword-badge {
   display: inline-block;
-  background-color: #007bff;
+  background-color: #4a90e2;
   color: white;
   padding: 8px 15px;
   border-radius: 20px;
@@ -110,7 +113,7 @@
 }
 
 .keyword-badge:hover {
-  background-color: #0056b3;
+  background-color: #357abd;
 }
 
 .keywords-list.missing .keyword-badge {
@@ -124,7 +127,7 @@
 .resume-preview-textarea {
   width: 100%;
   padding: 15px;
-  border: 1px solid #ccc;
+  border: 1px solid #555;
   border-radius: 8px;
   font-family: inherit;
   font-size: clamp(0.85rem, 1vw, 1rem); /* Slightly smoother scaling */
@@ -132,10 +135,10 @@
   resize: vertical;
   overflow-y: auto;
   flex-grow: 1;
-  background-color: #fdfdfd;
-  color: #333;
+  background-color: #3a3a3c;
+  color: #ffffff;
   scrollbar-width: thin;
-  scrollbar-color: #888 #f1f1f1;
+  scrollbar-color: #555 #2d2d30;
   text-align: left;
   white-space: pre-wrap; /* Preserves breaks but still wraps text */
   box-sizing: border-box; /* Ensures padding doesn't break width */
@@ -149,17 +152,17 @@
 }
 
 .resume-preview-textarea::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #2d2d30;
   border-radius: 10px;
 }
 
 .resume-preview-textarea::-webkit-scrollbar-thumb {
-  background: #888;
+  background: #555;
   border-radius: 10px;
 }
 
 .resume-preview-textarea::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: #4a90e2;
 }
 
 
@@ -175,7 +178,7 @@
 
 .left-column,
 .right-column {
-  flex: 1 1 min(450px, 100%);
+  flex: 1 1 48%;
   display: flex;
   flex-direction: column;
   gap: clamp(15px, 2vw, 25px);
@@ -184,7 +187,7 @@
 /* Heading font sizes */
 .score-card h2 {
   font-size: clamp(1.8em, 3vw, 2.2em);
-  color: #333;
+  color: #ffffff;
   margin-bottom: 20px;
 }
 
@@ -192,8 +195,15 @@
 .keywords-card h4,
 .resume-preview-card h3 {
   font-size: clamp(1.5em, 2.5vw, 1.8em);
-  color: #333;
+  color: #ffffff;
   margin-bottom: 15px;
 }
 
 /* No need for separate media queries if using clamp() and flexible units effectively */
+
+@media (max-width: 700px) {
+  .left-column,
+  .right-column {
+    flex-basis: 100%;
+  }
+}

@@ -85,9 +85,9 @@ const ScoreDisplay = ({ result }) => {
                 You can add up to <strong>{result.missingSkills.length}</strong> more keywords to your resume.
               </p>
             )}
-            <p>
+            {/* <p>
               To significantly improve your resume's alignment with this job description, focus on strategically incorporating the following <strong>Missing Keywords</strong>. Only add skills you genuinely possess and can demonstrate.
-            </p>
+            </p> */}
             <p className="suggestion-tip">
               💡 <strong>Tip:</strong> Consider weaving these terms into your:
               <ul>
@@ -134,7 +134,7 @@ const ScoreDisplay = ({ result }) => {
             <h3>Parsed Resume Text</h3>
             <textarea
               className="resume-preview-textarea"
-              rows="20" // Adjust rows as needed
+              rows="25" // Adjust rows as needed
               readOnly
               value={result.parsedResumeText}
             ></textarea>
