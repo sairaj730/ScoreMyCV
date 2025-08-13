@@ -39,7 +39,6 @@ const FileUpload = ({ jdText, onResult, setError }) => {
         accept=".txt,.pdf,.docx"
         onChange={(e) => setFile(e.target.files?.[0] || null)}
       />
-      {file && <span className="file-name">Selected file: {file.name}</span>}
       <button
         className="upload-button"
         onClick={handleUpload}
@@ -47,6 +46,7 @@ const FileUpload = ({ jdText, onResult, setError }) => {
       >
         {loading ? "Scoring..." : "Score My Resume"}
       </button>
+      {file && <span className="file-name">Selected file: {file.name}</span>}
     </div>
   );
 };

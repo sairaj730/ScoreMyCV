@@ -10,20 +10,25 @@
 
 .score-card,
 .keywords-card,
-.suggestions-card {
+.suggestions-card,
+.resume-preview-card { /* Added resume-preview-card here */
   background-color: #ffffff;
   border: 1px solid #e0e0e0;
   border-radius: 10px;
   padding: 25px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.3s ease, transform 0.3s ease; /* Added transition */
 }
 
-.resume-preview-card {
-  background-color: #ffffff;
-  border: 1px solid #e0e0e0;
-  border-radius: 10px;
-  padding: 25px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+.score-card:hover,
+.keywords-card:hover,
+.suggestions-card:hover,
+.resume-preview-card:hover { /* Added hover effect */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  transform: translateY(-3px);
+}
+
+.resume-preview-card { /* Kept specific styles for resume-preview-card */
   min-height: 250px; /* Reduced min-height */
   display: flex;
   flex-direction: column;
@@ -116,45 +121,47 @@
   background-color: #c82333;
 }
 
-/* Styles for the new resume preview textarea */
 .resume-preview-textarea {
   width: 100%;
-  padding: 15px; /* Consistent with job description textarea */
+  padding: 15px;
   border: 1px solid #ccc;
-  border-radius: 8px; /* Consistent with job description textarea */
+  border-radius: 8px;
   font-family: inherit;
-  font-size: clamp(0.8em, 1.3vw, 0.85em); /* Consistent with previous font size */
+  font-size: clamp(0.85rem, 1vw, 1rem); /* Slightly smoother scaling */
   line-height: 1.6;
-  resize: vertical; /* Allow vertical resizing */
-  overflow-y: auto; /* Enable vertical scrolling */
-  flex-grow: 1; /* Allow it to grow and fill space */
-  background-color: #fdfdfd; /* Consistent background */
-  color: #333; /* Default text color */
-  scrollbar-width: thin; /* For Firefox */
-  scrollbar-color: #888 #f1f1f1; /* For Firefox */
-  text-align: left; /* Explicitly left-align text */
-  vertical-align: top; /* Align text to the top */
-  white-space: normal; /* Standard white-space handling for textarea */
+  resize: vertical;
+  overflow-y: auto;
+  flex-grow: 1;
+  background-color: #fdfdfd;
+  color: #333;
+  scrollbar-width: thin;
+  scrollbar-color: #888 #f1f1f1;
+  text-align: left;
+  white-space: pre-wrap; /* Preserves breaks but still wraps text */
+  box-sizing: border-box; /* Ensures padding doesn't break width */
+  min-height: 150px; /* Keeps a consistent height */
+  display: block; /* Makes sure it aligns well in form layouts */
 }
 
 /* For Webkit browsers (Chrome, Safari) */
 .resume-preview-textarea::-webkit-scrollbar {
-  width: 8px; /* Width of the scrollbar */
+  width: 8px;
 }
 
 .resume-preview-textarea::-webkit-scrollbar-track {
-  background: #f1f1f1; /* Color of the track */
+  background: #f1f1f1;
   border-radius: 10px;
 }
 
 .resume-preview-textarea::-webkit-scrollbar-thumb {
-  background: #888; /* Color of the scroll thumb */
+  background: #888;
   border-radius: 10px;
 }
 
 .resume-preview-textarea::-webkit-scrollbar-thumb:hover {
-  background: #555; /* Color of the scroll thumb on hover */
+  background: #555;
 }
+
 
 /* Styles for the two-column layout */
 .score-display-columns {

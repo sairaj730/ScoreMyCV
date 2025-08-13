@@ -11,6 +11,12 @@
   max-width: 600px; /* Increased max-width */
   margin: 20px auto; /* Center the container */
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); /* Subtle shadow */
+  transition: box-shadow 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+}
+
+.file-upload-container:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12); /* More pronounced shadow on hover */
+  transform: translateY(-3px); /* Slight lift on hover */
 }
 
 .file-input-label {
@@ -71,4 +77,5 @@ input[type="file"] {
   font-weight: bold;
   font-size: 1em; /* Larger font size */
   color: #555;
+  margin-top: 10px; /* Add some space above the file name */
 }

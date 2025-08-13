@@ -11,7 +11,8 @@ function App() {
 
   return (
     <div className="App">
-      <h1>ScoreMyCV — ATS Demo</h1>
+      <h1 style={{ textAlign: 'center', color: '#007bff', textShadow: '0 0 8px rgba(0, 123, 255, 0.6)' }}>
+        Score My Resume</h1>
 
       {step === "jd" && (
         <JobDescription
@@ -31,7 +32,7 @@ function App() {
       {step === "result" && (
         <>
           <ScoreDisplay result={result} />
-          <div className="start-over-button-container">
+          <div className="start-over-button-container" style={{ textAlign: 'center', marginTop: '20px', width: '100%' }}>
             <button
               className="start-over-button"
               onClick={() => { setResult(null); setError(null); setStep("jd"); setJdText(""); }}
