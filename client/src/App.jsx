@@ -32,9 +32,14 @@ function App() {
       {step === "result" && (
         <>
           <ScoreDisplay result={result} />
-          <button onClick={() => { setResult(null); setError(null); setStep("jd"); setJdText(""); }}>
-            Start Over
-          </button>
+          <div className="start-over-button-container">
+            <button
+              className="start-over-button"
+              onClick={() => { setResult(null); setError(null); setStep("jd"); setJdText(""); }}
+            >
+              Start Over
+            </button>
+          </div>
         </>
       )}
     </div>

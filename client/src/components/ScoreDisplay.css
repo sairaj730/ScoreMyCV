@@ -3,7 +3,7 @@
   flex-direction: column;
   gap: 20px;
   width: 100%;
-  max-width: 800px;
+  max-width: 1000px; /* Increased max-width */
   margin: 20px auto;
 }
 
@@ -14,21 +14,59 @@
   background-color: #f9f9f9;
   border: 1px solid #ddd;
   border-radius: 8px;
-  padding: 20px;
+  padding: 25px; /* Increased padding */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.score-value {
-  font-size: 3em;
+/* New styles for circular progress bar */
+.circular-progress-container {
+  width: 160px; /* Slightly larger */
+  height: 160px; /* Slightly larger */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e0e0e0; /* Light grey track */
+  position: relative;
+  margin: 20px auto;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1); /* Inner shadow for depth */
+}
+
+.circular-progress-bar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: conic-gradient(
+    #6a11cb calc(var(--score) * 1%), /* Purple start */
+    #2575fc calc(var(--score) * 1%), /* Blue end */
+    #e0e0e0 0% /* Grey for remaining track */
+  );
+  transition: background 1.5s ease-in-out; /* Smooth transition for the progress */
+}
+
+.score-text {
+  position: absolute;
+  font-size: 2.8em; /* Slightly larger font */
   font-weight: bold;
-  color: #000000;
-  text-align: center;
-  margin: 10px 0;
+  color: #333; /* Darker text color */
+  background-color: white; /* Inner circle background */
+  width: 80%;
+  height: 80%;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1; /* Ensure text is above the progress bar */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for inner circle */
 }
 
 .score-description {
   text-align: center;
-  font-size: 0.9em;
+  font-size: 1em; /* Slightly larger font */
   color: #666;
 }
 
@@ -50,10 +88,10 @@
   display: inline-block;
   background-color: #007bff;
   color: white;
-  padding: 5px 10px;
+  padding: 6px 12px; /* Slightly larger padding */
   border-radius: 15px;
   margin: 5px;
-  font-size: 0.9em;
+  font-size: 0.95em; /* Slightly larger font */
 }
 
 .keywords-list.missing .keyword-badge {
@@ -61,11 +99,43 @@
 }
 
 .resume-preview {
-  max-height: 200px;
+  max-height: 250px; /* Increased max-height */
   overflow-y: auto;
   white-space: pre-wrap;
   background-color: #fff;
   border: 1px solid #ccc;
-  padding: 10px;
+  padding: 15px; /* Increased padding */
   border-radius: 4px;
+  font-size: 0.95em; /* Slightly larger font */
+}
+
+/* Styles for the two-column layout */
+.score-display-columns {
+  display: flex;
+  flex-wrap: wrap; /* Allow columns to wrap on smaller screens */
+  gap: 20px; /* Space between columns */
+  justify-content: center; /* Center columns if they don't fill the width */
+}
+
+.left-column,
+.right-column {
+  flex: 1 1 45%; /* Flexible sizing, preferred 45% width */
+  /* min-width: 300px; Removed min-width */
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Space between cards within a column */
+}
+
+/* Heading font sizes */
+.score-card h2 {
+  font-size: 2em; /* Larger */
+}
+
+.suggestions-card h3,
+.resume-preview-card h3 {
+  font-size: 1.8em; /* Larger */
+}
+
+.keywords-card h4 {
+  font-size: 1.5em; /* Larger */
 }
