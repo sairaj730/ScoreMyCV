@@ -16,19 +16,24 @@ const ScoreDisplay = ({ result }) => {
       </div>
 
       <div className="suggestions-card">
-        <h3>🎯 Actionable Steps to Boost Your Score</h3>
-        <p>
-          To significantly improve your resume's alignment with this job description, focus on strategically incorporating the following **missing keywords**. Only add skills you genuinely possess and can demonstrate.
+        <h3 className="card-title">🎯 Actionable Steps to Boost Your Score</h3>
+        
+        <p className="card-description">
+          To improve your resume’s match with this job, focus on incorporating the
+          <strong> missing keywords </strong> below. Only add skills you genuinely possess.
         </p>
-        <p className="suggestion-tip">
-          💡 **Tip:** Consider weaving these terms into your:
+
+        <div className="suggestion-tip">
+          💡 <strong>Tip:</strong> You can integrate these into:
           <ul>
-            <li>**Skills Section:** For direct listing.</li>
-            <li>**Experience Descriptions:** Describe how you used these skills in past roles.</li>
-            <li>**Project Details:** Highlight projects where you applied these technologies.</li>
+            <li><strong>Skills Section:</strong> Direct listing of abilities.</li>
+            <li><strong>Experience:</strong> Show how you’ve applied them.</li>
+            <li><strong>Projects:</strong> Highlight relevant achievements.</li>
           </ul>
-        </p>
-        <h4>Missing Keywords to Consider:</h4>
+        </div>
+
+        <h4 className="keywords-heading">🚀 Missing Keywords to Consider:</h4>
+
         <div className="keywords-list missing">
           {result.missingSkills && result.missingSkills.length > 0 ? (
             result.missingSkills.map((s) => (
@@ -37,13 +42,15 @@ const ScoreDisplay = ({ result }) => {
               </span>
             ))
           ) : (
-            <p>No keywords missing. Great job!</p>
+            <p className="no-missing">✅ No keywords missing. Great job!</p>
           )}
         </div>
+
         <p className="suggestion-conclusion">
-          By adding relevant missing keywords, you can significantly increase your resume's visibility to Applicant Tracking Systems (ATS) and recruiters.
+          Adding relevant missing keywords can greatly boost your visibility in Applicant Tracking Systems and to recruiters.
         </p>
       </div>
+
 
       <div className="keywords-card">
         <h4>Matched Keywords</h4>
