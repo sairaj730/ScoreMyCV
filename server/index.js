@@ -12,6 +12,8 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+const app = express();
+
 // Serve frontend in production
 if (process.env.NODE_ENV === 'production') {
   const clientBuildPath = path.join(__dirname, '../client/dist');
@@ -23,7 +25,7 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-const app = express();
+
 app.use(cors());
 app.use(express.json());
 
