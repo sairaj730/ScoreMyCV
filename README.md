@@ -10,14 +10,14 @@ It helps job seekers understand **how well their resume matches a specific job r
 - [🚀 Features](#-features)
 - [🛠️ Tech Stack](#️-tech-stack)
 - [📂 Project Structure](#-project-structure)
-- [⚙️ Installation & Setup](#️-installation--setup)
+<!-- - [⚙️ Installation & Setup](#️-installation--setup)
 - [▶️ Running the App Locally](#️-running-the-app-locally)
 - [🌍 Deployment](#-deployment)
 - [🔍 How It Works](#-how-it-works)
 - [📸 Screenshots](#-screenshots)
 - [💡 Future Improvements](#-future-improvements)
 - [🤝 Contributing](#-contributing)
-- [📜 License](#-license)
+- [📜 License](#-license) -->
 
 ---
 

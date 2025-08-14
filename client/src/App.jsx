@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import JobDescription from "./components/JobDescription";
 import FileUpload from "./components/FileUpload";
 import ScoreDisplay from "./components/ScoreDisplay";
+import '@fortawesome/fontawesome-free/css/all.min.css';
+
 
 function App() {
   const [step, setStep] = useState("jd"); // "jd" -> "upload" -> "result"
@@ -66,7 +68,7 @@ function App() {
 
   return (
     <div className="App" style={{ backgroundColor: '#2d2d30', padding: '20px', borderRadius: '8px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }}>
-      <h1 style={{ textAlign: 'center', color: '#4a90e2', textShadow: '0 0 10px rgba(74, 144, 226, 0.5)', marginBottom: '10px' }}>
+      <h1 style={{ textAlign: 'center', color: '#ffffffff', textShadow: '0 0 10px rgba(214, 214, 214, 0.5)', marginBottom: '10px' }}>
         Score My Resume</h1>
 
       {step === "jd" && (
@@ -98,7 +100,47 @@ function App() {
           </div>
         </div>
       )}
+      <footer style={{ 
+        marginTop: '40px', 
+        textAlign: 'center', 
+        color: '#ccc', 
+        fontSize: '14px'
+      }}>
+        <p style={{ marginBottom: '10px' }}>❤️ Built with love to power your job success, inspire confidence, and help you stand out in every application you send.</p>
+
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '20px' }}>
+          {/* GitHub Icon */}
+          <a 
+            href="https://github.com/sairaj730/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            style={{
+              color: '#ccc',
+              transition: 'transform 0.3s ease, color 0.3s ease'
+            }}
+            onMouseEnter={(e) => { e.target.style.color = '#4a90e2'; e.target.style.transform = 'scale(1.2)'; }}
+            onMouseLeave={(e) => { e.target.style.color = '#ccc'; e.target.style.transform = 'scale(1)'; }}
+          >
+            <i className="fab fa-github" style={{ fontSize: '24px' }}></i>
+          </a>
+
+          {/* Mail Icon */}
+          <a 
+            href="mailto:vadasairaju123@gmail.com"
+            style={{
+              color: '#ccc',
+              transition: 'transform 0.3s ease, color 0.3s ease'
+            }}
+            onMouseEnter={(e) => { e.target.style.color = '#4a90e2'; e.target.style.transform = 'scale(1.2)'; }}
+            onMouseLeave={(e) => { e.target.style.color = '#ccc'; e.target.style.transform = 'scale(1)'; }}
+          >
+            <i className="fas fa-envelope" style={{ fontSize: '24px' }}></i>
+          </a>
+        </div>
+      </footer>
+
     </div>
+    
   );
 }
 
